@@ -1,0 +1,6 @@
+@DockerAndContainerizationSample_HostAddress = http://localhost:5109
+
+GET {{DockerAndContainerizationSample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
