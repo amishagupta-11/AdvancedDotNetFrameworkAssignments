@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Choose Shape and Color";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div>
+        <label for="shape">Choose Shape:</label>
+        <select id="shape" name="shapeIndex">
+            @if (ViewData["Shapes"] != null)
+            {
+                var shapes = ViewData["Shapes"] as List<BridgeDesignPatternSample.Models.Shape>;
+                if (shapes != null)
+                {
+                    for (var i = 0; i < shapes.Count; i++)
+                    {
+                        <option value="@i">@shapes[i].GetType().Name</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+
+    <div>
+        <label for="color">Choose Color:</label>
+        <select id="color" name="colorIndex">
+            @if (ViewData["Colors"] != null)
+            {
+                var colors = ViewData["Colors"] as List<BridgeDesignPatternSample.Interfaces.IShapeColor>;
+                if (colors != null)
+                {
+                    for (var i = 0; i < colors.Count; i++)
+                    {
+                        <option value="@i">@colors[i].FillColor()</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+
+    <button type="submit">Draw Shape</button>
+</form>
+
+<!-- Show the selected shape and its color -->
+@if (ViewData["SelectedShape"] != null && ViewData["SelectedColor"] != null)
+{
+    <h2>Selected Shape:</h2>
+    <p>Shape: @((ViewData["SelectedShape"] as BridgeDesignPatternSample.Models.Shape).GetType().Name)</p>
+    <p>Color: @ViewData["SelectedColor"]</p>
+    <p>@((ViewData["SelectedShape"] as BridgeDesignPatternSample.Models.Shape).Draw())</p>
+}

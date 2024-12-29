@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Coffee Order";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div>
+        <label for="coffeeType">Choose Coffee Type:</label>
+        <select id="coffeeType" name="coffeeType">
+            @foreach (var coffeeType in ViewData["CoffeeTypes"] as List<string>)
+            {
+                <option value="@coffeeType">@coffeeType</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label for="decorators">Choose Decorators (Hold Ctrl to select multiple):</label>
+        <select id="decorators" name="selectedDecorators" multiple>
+            @foreach (var decorator in ViewData["Decorators"] as List<string>)
+            {
+                <option value="@decorator">@decorator</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit">Order Coffee</button>
+</form>
+
+@if (ViewData["Description"] != null)
+{
+    <h2>Your Order:</h2>
+    <p>Description: @ViewData["Description"]</p>
+    <p>Total Cost: $@ViewData["Cost"]</p>
+}
+
+<!-- CSS to control the height and appearance of the multi-select -->
+<style>
+    #decorators {
+        height: auto;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+</style>
