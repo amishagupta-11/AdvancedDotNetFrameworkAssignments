@@ -9,17 +9,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentEntityframeworkA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroservicesAssignment", "MicroservicesAssignmnet\MicroservicesAssignment.csproj", "{1AC0AD5B-BDEE-4175-B692-268D5C0CD912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryPatternSample", "DesignPatternsSamples\FactoryPatternSample.csproj", "{5ECAD8E2-3DF2-4721-8A68-6FEA4A4030B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryPatternSample", "DesignPatternsSamples\FactoryPatternSample.csproj", "{5ECAD8E2-3DF2-4721-8A68-6FEA4A4030B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderDesignPatternSample", "BuilderDesignPattern\BuilderDesignPatternSample.csproj", "{2EDF82BF-C7C0-4A85-8236-40A1785CA3B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderDesignPatternSample", "BuilderDesignPattern\BuilderDesignPatternSample.csproj", "{2EDF82BF-C7C0-4A85-8236-40A1785CA3B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactoryPatternSample", "AbstractFactoryPatternSample\AbstractFactoryPatternSample.csproj", "{02DF8E8F-0AE7-4C83-9F7B-F42AF8C388FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractFactoryPatternSample", "AbstractFactoryPatternSample\AbstractFactoryPatternSample.csproj", "{02DF8E8F-0AE7-4C83-9F7B-F42AF8C388FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterDesignPatternSample", "AdapterDesignPatternSample\AdapterDesignPatternSample.csproj", "{FD7AF47B-3F5C-4678-B45B-8F704583C48F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeDesignPatternSample", "BridgeDesignPatternSample\BridgeDesignPatternSample.csproj", "{4F485674-0824-4F9B-B1CB-0B824FB85DA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorDesignPattern", "DecoratorDesignPattern\DecoratorDesignPattern.csproj", "{40B7499C-2C4E-4C9F-85A1-1AD7CBD78A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverDesignPatternSample", "ObserverDesignPatternSample\ObserverDesignPatternSample.csproj", "{1CC82353-E775-428C-9595-90CB4CEDD9CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandDesignPatternSample", "CommandDesignPatternSample\CommandDesignPatternSample.csproj", "{1C872609-5B63-4B71-907B-F3B677C02771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPatternSample", "StrategyPatternSample\StrategyPatternSample.csproj", "{C3DC05C2-F60A-4407-9741-53D927947D41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{40B7499C-2C4E-4C9F-85A1-1AD7CBD78A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B7499C-2C4E-4C9F-85A1-1AD7CBD78A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40B7499C-2C4E-4C9F-85A1-1AD7CBD78A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC82353-E775-428C-9595-90CB4CEDD9CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC82353-E775-428C-9595-90CB4CEDD9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC82353-E775-428C-9595-90CB4CEDD9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC82353-E775-428C-9595-90CB4CEDD9CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C872609-5B63-4B71-907B-F3B677C02771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C872609-5B63-4B71-907B-F3B677C02771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C872609-5B63-4B71-907B-F3B677C02771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C872609-5B63-4B71-907B-F3B677C02771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3DC05C2-F60A-4407-9741-53D927947D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DC05C2-F60A-4407-9741-53D927947D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DC05C2-F60A-4407-9741-53D927947D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DC05C2-F60A-4407-9741-53D927947D41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

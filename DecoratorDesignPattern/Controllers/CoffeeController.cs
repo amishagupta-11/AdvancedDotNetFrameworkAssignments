@@ -5,9 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DecoratorDesignPattern.Controllers
 {
+    /// <summary>
+    /// Controller for handling coffee and decorator selections.
+    /// Allows users to choose a coffee type and apply decorators, displaying the resulting description and cost.
+    /// </summary>
     public class CoffeeController : Controller
     {
-        // The GET method to load the initial page with the available coffee and decorators
+        /// <summary>
+        /// Loads the initial page with available coffee types and decorators.
+        /// Populates dropdown lists with the coffee types (Espresso, Coffee, Cappuccino) and decorator options (Milk, Sugar, None).
+        /// </summary>
+        /// <returns>Returns the view with the coffee types and decorators</returns>
         public IActionResult Index()
         {
             // Create lists of available coffee types and decorators for the dropdown
@@ -21,7 +29,13 @@ namespace DecoratorDesignPattern.Controllers
             return View();
         }
 
-        // The POST method to handle form submission and apply decorators
+        /// <summary>
+        /// Handles form submission for selecting a coffee type and decorators.
+        /// Based on user selection, applies the chosen decorators to the selected coffee and returns the updated description and cost.
+        /// </summary>
+        /// <param name="coffeeType">The selected coffee type</param>
+        /// <param name="selectedDecorators">The list of selected decorators to apply to the coffee</param>
+        /// <returns>Returns the view with updated coffee description and cost</returns>
         [HttpPost]
         public IActionResult Index(string coffeeType, List<string> selectedDecorators)
         {

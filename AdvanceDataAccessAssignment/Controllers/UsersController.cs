@@ -5,6 +5,9 @@ using AdvanceDataAccessAssignment.Models;
 
 namespace AdvanceDataAccessAssignment.Controllers
 {
+    /// <summary>
+    /// Controller to handle user operations.
+    /// </summary>
     public class UsersController : Controller
     {
         private readonly AdvanceDataAccessAssignmentContext _context;
@@ -14,14 +17,18 @@ namespace AdvanceDataAccessAssignment.Controllers
             _context = context;
         }
 
-        // GET: Users
+        /// <summary>
+        /// Displays all users in the system.
+        /// </summary>
         public async Task<IActionResult> Index()
         {
-            var advanceDataAccessAssignmentContext = _context.Users;
-            return View(await advanceDataAccessAssignmentContext.ToListAsync());
+            var users = await _context.Users.ToListAsync();
+            return View(users);
         }
 
-        // GET: Users/Details/5
+        /// <summary>
+        /// Displays the details of a specific user.
+        /// </summary>
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -29,39 +36,51 @@ namespace AdvanceDataAccessAssignment.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users
+            var user = await _context.Users
                 .FirstOrDefaultAsync(m => m.UserId == id);
-            if (users == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return View(users);
+            return View(user);
         }
 
-        // GET: Users/Create
+        /// <summary>
+        /// Displays the create user form.
+        /// </summary>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Creates a new user in the system.
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,UserName,PhoneNumber,EmailAddress,ElectronicName")] Users users)
+        public async Task<IActionResult> Create([Bind("UserId,UserName,PhoneNumber,EmailAddress,ElectronicName")] Users user)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(users);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    // Add error handling, such as logging or user-friendly messages
+                    return BadRequest($"Error occurred while adding user: {ex.Message}");
+                }
             }
-            return View(users);
+            return View(user);
         }
 
-        // GET: Users/Edit/5
+        /// <summary>
+        /// Displays the edit user form for a specific user.
+        /// </summary>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -69,22 +88,22 @@ namespace AdvanceDataAccessAssignment.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
-            return View(users);
+            return View(user);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Updates user details in the system.
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,PhoneNumber,EmailAddress,ElectronicName")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,PhoneNumber,EmailAddress,ElectronicName")] Users user)
         {
-            if (id != users.UserId)
+            if (id != user.UserId)
             {
                 return NotFound();
             }
@@ -93,26 +112,29 @@ namespace AdvanceDataAccessAssignment.Controllers
             {
                 try
                 {
-                    _context.Update(users);
+                    _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsersExists(users.UserId))
+                    if (!UsersExists(user.UserId))
                     {
                         return NotFound();
                     }
                     else
                     {
+                        // Handle concurrency error (e.g., log the error)
                         throw;
                     }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(users);
+            return View(user);
         }
 
-        // GET: Users/Delete/5
+        /// <summary>
+        /// Displays the delete user confirmation page.
+        /// </summary>
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -120,31 +142,36 @@ namespace AdvanceDataAccessAssignment.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users
+            var user = await _context.Users
                 .FirstOrDefaultAsync(m => m.UserId == id);
-            if (users == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return View(users);
+            return View(user);
         }
 
-        // POST: Users/Delete/5
+        /// <summary>
+        /// Deletes the user from the system.
+        /// </summary>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var users = await _context.Users.FindAsync(id);
-            if (users != null)
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
             {
-                _context.Users.Remove(users);
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
             }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        /// <summary>
+        /// private method to check whether a user exists or not.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool UsersExists(int id)
         {
             return _context.Users.Any(e => e.UserId == id);
